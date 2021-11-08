@@ -42,7 +42,7 @@ public class TeamRepository {
 		return teamList;
 	}
 	
-	public Team TeamfindById(Integer id) {
+	public Team findById(Integer id) {
 		
 		String sql = "SELECT * FROM teams WHERE id = :id;";
 		
