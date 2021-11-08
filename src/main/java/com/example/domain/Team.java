@@ -4,27 +4,41 @@ import java.util.Date;
 
 public class Team {
 	
-	private String name;
-	private String field;
-	private Date birthDay;
+	private Integer id;
+	private String leagueName;
+	private String teamName;
+	private String headquartes;
+	private String inaguration;
 	private String history;
-	public String getName() {
-		return name;
+	public Integer getId() {
+		return id;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	public String getField() {
-		return field;
+	public String getLeagueName() {
+		return leagueName;
 	}
-	public void setField(String field) {
-		this.field = field;
+	public void setLeagueName(String leagueName) {
+		this.leagueName = leagueName;
 	}
-	public Date getBirthDay() {
-		return birthDay;
+	public String getTeamName() {
+		return teamName;
 	}
-	public void setBirthDay(Date birthDay) {
-		this.birthDay = birthDay;
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
+	public String getHeadquartes() {
+		return headquartes;
+	}
+	public void setHeadquartes(String headquartes) {
+		this.headquartes = headquartes;
+	}
+	public String getInaguration() {
+		return inaguration;
+	}
+	public void setInaguration(String inaguration) {
+		this.inaguration = inaguration;
 	}
 	public String getHistory() {
 		return history;
@@ -34,8 +48,10 @@ public class Team {
 	}
 	@Override
 	public String toString() {
-		return "Team [name=" + name + ", field=" + field + ", birthDay=" + birthDay + ", history=" + history + "]";
+		return "Team [id=" + id + ", leagueName=" + leagueName + ", teamName=" + teamName + ", headquartes="
+				+ headquartes + ", inaguration=" + inaguration + ", history=" + history + "]";
 	}
+	
 	
 	
 
