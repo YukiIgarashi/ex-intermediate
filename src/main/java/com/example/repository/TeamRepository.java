@@ -12,12 +12,20 @@ import org.springframework.stereotype.Repository;
 
 import com.example.domain.Team;
 
+/**
+ * DBからチーム情報を検索する用のレポジトリクラス
+ * @author igayuki
+ *
+ */
 @Repository
 public class TeamRepository {
 	
 	@Autowired
 	private NamedParameterJdbcTemplate template;
 	
+	/**
+	 *DBから抽出のデータをチームオブジェクトに詰め替える 
+	 */
 	private static final RowMapper<Team> TEAM_ROW_MAPPER
 		= (rs,i)->{
 		Team team = new Team();
@@ -33,15 +41,24 @@ public class TeamRepository {
 	
 	
 	
+	/**
+	 * 全件検索
+	 * @return
+	 */
 	public List<Team> findAll() {
 		
-		String sql = "SELECT * FROM teams;";
+		String sql = "SELECT * FROM teams ORDER BY inauguration ASC;";
 		
 		List<Team> teamList = template.query(sql, TEAM_ROW_MAPPER);
 		
 		return teamList;
 	}
 	
+	/**
+	 * 引数で受けたidのチームを1件検索
+	 * @param id　検索したいチームID
+	 * @return　検索結果のチームオブジェクト
+	 */
 	public Team findById(Integer id) {
 		
 		String sql = "SELECT * FROM teams WHERE id = :id;";

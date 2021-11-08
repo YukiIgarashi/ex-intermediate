@@ -12,11 +12,14 @@
 	<h2>発足</h2>
 	<span th:text="${team.inaguration}"></span>
 	<h2>歴史</h2>
-	<span th:text="${team.history}"></span>
+	<pre th:text="${team.history}"></pre>
 	
 	<form th:action="@{/team/showList}" method="post">
 		<button>戻る</button>
 	</form>
+	
+	<!-- getでも可　なくても可 -->
+
 
 </body>
 </html>

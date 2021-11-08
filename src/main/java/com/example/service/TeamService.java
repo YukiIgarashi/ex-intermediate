@@ -8,6 +8,11 @@ import org.springframework.stereotype.Service;
 import com.example.domain.Team;
 import com.example.repository.TeamRepository;
 
+/**
+ * レポジトリクラスを動作させるサービスクラス
+ * @author igayuki
+ *
+ */
 @Service
 public class TeamService {
 	
