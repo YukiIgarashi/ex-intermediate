@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>衣類検索</title>
+</head>
+<body>
+	<h3>衣類検索</h3>
+	<form th:action="@{result}" method="post">
+		<table>
+			<tr>
+				<td>
+					<input type="radio" name="gender" value="0">Man
+				</td>
+				<td>
+					<select th:each="color:${colorList}">
+						<option th:text="${color}" value="${color}"></option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="radio" name="gender" value="1">Woman
+				</td>
+			</tr>
+		</table>
+		
+		<button>検索</button>
+		
+	</form>
+	
+</body>
+</html>
