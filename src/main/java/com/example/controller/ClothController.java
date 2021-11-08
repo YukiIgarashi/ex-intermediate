@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.domain.Cloth;
 import com.example.service.ClothService;
 
 @Controller
@@ -31,6 +32,16 @@ public class ClothController {
 		model.addAttribute("colorList", colorList);
 		
 		return "search";
+		
+	}
+	
+	@RequestMapping("/result")
+	public String result(Model model,Integer gender,String color) {
+		
+		List<Cloth> clothList = service.findByGenderAndColor(gender, color);
+		model.addAttribute("clothList",clothList);
+		
+		return search(model);
 		
 	}
 	
