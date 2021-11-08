@@ -8,18 +8,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.service.TeamService;
 
 @Controller
-@RequestMapping("team")
+@RequestMapping("/team")
 public class TeamController {
 	
 	@Autowired
 	TeamService service;
 	
-	@RequestMapping("")
+	@RequestMapping("/showList")
 	public String showList(Model model) {
 		
 		model.addAttribute("teamList",service.findAll()) ;
 		
 		return "list";
+		
+	}
+	
+	@RequestMapping("/showDetail")
+	public String showDetail(Integer id,Model model) {
+		
+		model.addAttribute("team", service.findById(id));
+		
+		return "detail";
 		
 	}
 
