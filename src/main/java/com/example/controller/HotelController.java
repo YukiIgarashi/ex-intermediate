@@ -27,6 +27,12 @@ public class HotelController {
 		
 	}
 	
+	/**
+	 * フォームに入力された価格に基づきDBからデータ検索し、遷移先に表示
+	 * @param price　フォームに入力するホテルの価格
+	 * @param model　検索結果のホテルオブジェクトを詰めるスコープ
+	 * @return　遷移先（入力画面）
+	 */
 	@RequestMapping("/searchByprice")
 	public String searchByprice(String price,Model model) {
 		String trimedPrice = price.replaceAll(" ", "");
