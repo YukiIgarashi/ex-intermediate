@@ -1,11 +1,11 @@
 package com.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.repository.HotelRepository;
 import com.example.service.HotelService;
 
 /**
@@ -20,29 +20,30 @@ public class HotelController {
 	@Autowired
 	HotelService service;
 	
-	@RequestMapping("/")
+	@RequestMapping("")
 	public String input() {
 		
 		return "input";
 		
 	}
 	
-	@RequestMapping("/search")
-	public String search(Integer price,Model model) {
+	@RequestMapping("/searchByprice")
+	public String searchByprice(String price,Model model) {
+		String trimedPrice = price.replaceAll(" ", "");
+		trimedPrice = trimedPrice.replaceAll("　", "");
 		
-		model.addAttribute("hotelList",service.findByPrice(price));
+		if("".equals(trimedPrice)) {
+			model.addAttribute("hotelList",service.findByPrice());
+		}else {
+			int integerPrice = Integer.parseInt(trimedPrice);
+			model.addAttribute("hotelList",service.findByPrice(integerPrice));
+		}
 		
-		return "/hotel/";
+		
+		return "input";
 		
 	}
 	
-	@RequestMapping("/search")
-	public String search(Model model) {
-		
-		model.addAttribute("hotelList",service.findByPrice());
-		
-		return "/hotel/";
-		
-	}
+
 
 }
