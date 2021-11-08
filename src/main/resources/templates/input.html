@@ -6,7 +6,7 @@
 </head>
 <body>
 	<h2>ホテル検索</h2>
-	<form th:action="${}" method="post">
+	<form th:action="@{/hotel/search}" method="post">
 		<input type="text" name="price">円以下
 		<button>検索</button>
 	</form>
