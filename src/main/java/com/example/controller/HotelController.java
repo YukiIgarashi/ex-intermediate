@@ -35,5 +35,14 @@ public class HotelController {
 		return "/hotel/";
 		
 	}
+	
+	@RequestMapping("/search")
+	public String search(Model model) {
+		
+		model.addAttribute("hotelList",service.findByPrice());
+		
+		return "/hotel/";
+		
+	}
 
 }

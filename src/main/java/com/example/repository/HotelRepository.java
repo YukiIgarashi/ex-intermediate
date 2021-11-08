@@ -51,5 +51,18 @@ public class HotelRepository {
 			
 			return hotelList;
 		}
+		
+		/**
+		 * 引数がなく全件検索するメソッド
+		 * @return　Hotelオブジェクト全件
+		 */
+		public List<Hotel> findByPrice() {
+			
+			String sql = "SELECT * FROM hotels;";
+			
+			List<Hotel> hotelList = template.query(sql, HOTEL_ROW_MAPPER);
+			
+			return hotelList;
+		}
 
 }

@@ -24,5 +24,11 @@ public class HotelService {
 		return repository.findByPrice(price);
 		
 	}
+	
+	public List<Hotel> findByPrice() {
+		
+		return repository.findByPrice();
+		
+	}
 
 }
