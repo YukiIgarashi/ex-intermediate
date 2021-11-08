@@ -9,7 +9,7 @@ import com.example.domain.Hotel;
 import com.example.repository.HotelRepository;
 
 /**
- * 
+ * 演習2　サービス
  * @author igayuki
  *
  */
