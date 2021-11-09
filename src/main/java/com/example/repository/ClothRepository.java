@@ -45,12 +45,12 @@ public class ClothRepository {
 	public List<Cloth> findByGenderAndColor(Integer gender,String color) {
 		
 		String sql = "SELECT * FROM clothes "
-				+ "WHERE gender = :gender And color = :color;";
+				+ "WHERE gender = :gender AND color = :color;";
 		
 		SqlParameterSource param = new MapSqlParameterSource().addValue("gender", gender).addValue("color", color);
 		
 		List<Cloth> clothList = template.query(sql, param, CLOTH_ROW_MAPPER);
-		
+		System.out.println(clothList);
 		return clothList;
 		
 	}

@@ -1,24 +1,19 @@
-package com.example.domain;
+package com.example;
 
-/**
- * DBのテーブル定義と対になるドメインクラス
- * @author igayuki
- *
- */
-public class Cloth {
+public class ClothForm {
 	
-	private Integer id;
+	private String id;
 	private String category;
 	private String genre;
-	private Integer gender;
+	private String gender;
 	private String color;
-	private Integer price;
+	private String price;
 	private String size;
 	
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getCategory() {
@@ -33,10 +28,10 @@ public class Cloth {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	public Integer getGender() {
+	public String getGender() {
 		return gender;
 	}
-	public void setGender(Integer gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 	public String getColor() {
@@ -45,10 +40,10 @@ public class Cloth {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	public Integer getPrice() {
+	public String getPrice() {
 		return price;
 	}
-	public void setPrice(Integer price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 	public String getSize() {
@@ -59,7 +54,7 @@ public class Cloth {
 	}
 	@Override
 	public String toString() {
-		return "Cloth [id=" + id + ", category=" + category + ", genre=" + genre + ", gender=" + gender + ", color="
+		return "ClothForm [id=" + id + ", category=" + category + ", genre=" + genre + ", gender=" + gender + ", color="
 				+ color + ", price=" + price + ", size=" + size + "]";
 	}
 	

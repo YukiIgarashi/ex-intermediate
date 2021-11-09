@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.ClothForm;
 import com.example.domain.Cloth;
 import com.example.service.ClothService;
 
@@ -18,6 +20,13 @@ public class ClothController {
 	
 	@Autowired
 	ClothService service;
+	
+	@ModelAttribute
+	public ClothForm setUpForm() {
+		
+		return new ClothForm();
+		
+	}
 	
 	@RequestMapping("")
 	public String search(Model model) {
@@ -36,11 +45,12 @@ public class ClothController {
 	}
 	
 	@RequestMapping("/result")
-	public String result(Model model,Integer gender,String color) {
+	public String result(Model model,ClothForm clothForm) {
 		
-		List<Cloth> clothList = service.findByGenderAndColor(gender, color);
+		List<Cloth> clothList = service.findByGenderAndColor(Integer.parseInt(clothForm.getGender()),clothForm.getColor());
+		
 		model.addAttribute("clothList",clothList);
-		
+		System.out.println(clothForm.getGender()+ clothForm.getColor());
 		return search(model);
 		
 	}
