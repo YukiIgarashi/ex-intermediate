@@ -4,8 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.HotelForm;
 import com.example.service.HotelService;
 
 /**
@@ -19,6 +23,13 @@ public class HotelController {
 	
 	@Autowired
 	HotelService service;
+	
+	@ModelAttribute
+	public HotelForm setUpForm() {
+		
+		return new HotelForm();
+		
+	}
 	
 	@RequestMapping("")
 	public String input() {
@@ -34,8 +45,9 @@ public class HotelController {
 	 * @return　遷移先（入力画面ｘ）
 	 */
 	@RequestMapping("/searchByprice")
-	public String searchByprice(String price,Model model) {
-		String trimedPrice = price.replaceAll(" ", "");
+	public String searchByprice(@Validated HotelForm hotelForm,BindingResult result,Model model) {
+		
+		String trimedPrice = hotelForm.getPrice().replaceAll(" ", "");
 		trimedPrice = trimedPrice.replaceAll("　", "");
 		
 		if("".equals(trimedPrice)) {
@@ -44,7 +56,6 @@ public class HotelController {
 			int integerPrice = Integer.parseInt(trimedPrice);
 			model.addAttribute("hotelList",service.findByPrice(integerPrice));
 		}
-		
 		
 		return "input";
 		
